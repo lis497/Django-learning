@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Todos</title>
-	</head>
-	<body>
-		<h1>Add Todo</h1>
+{% extends "todos/layout.html" %}
+{% block title %}
+Add Todos
+{% endblock %}
+
+{% block body %}
+	<h1>Add Todo</h1>
 		<form>
 			<input type="text" name="task">
 			<input type="submit">
 		</form>
-
-	</body>
-</html>
+		<a href="{% url 'todos:index' %}">Check Todos</a>
+{% endblock %}
+	
+	

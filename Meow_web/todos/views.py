@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-tasks =["foo", "bar", "baz"]
+tasks =["foo Meow", "bar Dog", "baz Nimo"]
 
 def index(request):
 	return render(request, "todos/index.html",

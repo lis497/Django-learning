@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Todos</title>
-	</head>
-	<body>
-		<ul>
-			{% for todo in todos %}
-				<li><h1>{{todo}}</h1></li>
-			{% endfor %}
-		</ul>
+{% extends "todos/layout.html" %}
+{% block title %}
+Todos
+{% endblock %}
+
+{% block body %}
+	<ul>
+		{% for todo in todos %}
+			<li><h1>{{todo}}</h1></li>
+		{% endfor %}
+	</ul>
+	<a href="{% url 'todos:add' %}">Add Todos</a>
+{% endblock %}
 			
 
-	</body>
-</html>
+	
