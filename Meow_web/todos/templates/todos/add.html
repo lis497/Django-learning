@@ -7,7 +7,7 @@ Add Todos
 	<h1>Add Todo</h1>
 		<form action="{% url 'todos:add' %}" method="post">
 			{% csrf_token %}
-			<input type="text" name="task">
+			{{form}}
 			<input type="submit">
 		</form>
 		<a href="{% url 'todos:index' %}">Check Todos</a>
