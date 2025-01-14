@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse
 
 # Create your views here.
-tasks =["foo Meow", "bar Dog", "baz Nimo"]
+#tasks =["foo Meow", "bar Dog", "baz Nimo"]
 
 class NewTaskForm(forms.Form):
 	task = forms.CharField(label="Add Task")
@@ -12,8 +12,12 @@ class NewTaskForm(forms.Form):
 
 
 def index(request):
+	#print("at the beginning", dict(request.session))
+	if 'todos' not in request.session:
+		request.session["todos"] = []
+		#print("in if", dict(request.session))
 	return render(request, "todos/index.html", {
-			"todos": tasks
+			"todos": request.session["todos"]
 		})
 
 def add(request):
@@ -23,7 +27,9 @@ def add(request):
 		#print(form.cleaned_data)
 		if form.is_valid():
 			task = form.cleaned_data["task"]
-			tasks.append(task)
+			#!!! request.session["todos"].append(task)
+			request.session["todos"] += [task]
+			# append not works here
 			return HttpResponseRedirect(reverse("todos:index"))
 		else:
 			return render(request, "todos/add.html",{

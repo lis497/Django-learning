@@ -7,6 +7,10 @@ Todos
 	<ul>
 		{% for todo in todos %}
 			<li><h1>{{todo}}</h1></li>
+
+		{% empty %}
+			<li>No tasks.</li>
+
 		{% endfor %}
 	</ul>
 	<a href="{% url 'todos:add' %}">Add Todos</a>
